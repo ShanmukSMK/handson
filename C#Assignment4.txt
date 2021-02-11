@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Employee
+    {
+        int Empid;
+        string name;
+        public static string dept = "Accounts";
+        public static String Manager = "Ajay";
+        double BasicSalary;
+        int Exp;
+        double DA, HRA, PF, NetSalary;
+        public const string CompanyName = "CTS";
+        public const string CompanyAddress = "Chennai";
+
+        public void GetEmployeeDetails()
+        {
+            Console.WriteLine("Enter Employee ID");
+            Empid = Convert.ToByte(Console.ReadLine());
+            Console.WriteLine("Enter Name of the employee");
+            name = Console.ReadLine();
+           // Console.WriteLine("Enter Department name");
+           // dept = Console.ReadLine();
+           // Console.WriteLine("Enter Manager name");
+            //Manager = Console.ReadLine();
+            Console.WriteLine("Enter Basic Salary");
+            BasicSalary = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter Experience of the employee");
+            Exp = Convert.ToByte(Console.ReadLine());
+        }
+        public void CalculateNetsalary()
+        {
+            if (Exp <= 5)
+            {
+                DA = (1.9 * BasicSalary) / 100;
+                HRA = (2.0 * BasicSalary) / 100;
+                PF = 1200;
+            }
+            else if (Exp > 5 && Exp <= 7)
+            {
+                DA = (4.1 * BasicSalary) / 100;
+                HRA = (3.8 * BasicSalary) / 100;
+                PF = 1800;
+            }
+            else if (Exp > 7 && Exp <= 10)
+            {
+                DA = (7 * BasicSalary) / 100;
+                HRA = (6.5 * BasicSalary) / 100;
+                PF = 4100;
+            }
+            else if (Exp > 10)
+            {
+                DA = (10 * BasicSalary) / 100;
+                HRA = (8.5 * BasicSalary) / 100;
+                PF = 6200;
+            }
+
+            NetSalary = (BasicSalary + DA + HRA) - PF;
+        }
+        public void DisplayEmployeeDetails()
+
+        {
+            Console.WriteLine("Employee ID : " + Empid);
+            Console.WriteLine("Employee Name : " + name);
+            Console.WriteLine("Basic Salary is" + BasicSalary);
+            Console.WriteLine("DA is" + DA);
+            Console.WriteLine("HRA is" + HRA);
+            Console.WriteLine("PF is" + PF);
+            Console.WriteLine("Net salary is" + NetSalary);
+        }
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    
+    class Class1
+    {
+        static void Main()
+        {
+            Console.WriteLine("Company: " + Employee.CompanyName);
+            Console.WriteLine("Company Address: " + Employee.CompanyAddress);
+            Console.WriteLine("Department: " + Employee.dept);
+            Console.WriteLine("Manager: " + Employee.Manager);
+            //List<Employee> list = new List<Employee>();
+            Employee employee1 = new Employee();
+            employee1.DisplayEmployeeDetails();
+            Employee employee2 = new Employee("Raj");
+            employee2.CalculateNetsalary();
+            employee2.DisplayEmployeeDetails();
+            Employee employee3 = new Employee(1,"Ram");
+            employee3.CalculateNetsalary();
+            employee3.DisplayEmployeeDetails();
+            Employee employee4 = new Employee();
+           
+            Employee employee5 = new Employee();
+          
+
+       
+           
+
+        }
+
+    }
+}
